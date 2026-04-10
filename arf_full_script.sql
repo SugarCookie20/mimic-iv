@@ -1982,7 +1982,6 @@ SELECT
     (niv_hacor.niv_hacor_hr_t12_t24 + niv_hacor.niv_hacor_ph_t12_t24 + niv_hacor.niv_hacor_gcs_t12_t24 + niv_hacor.niv_hacor_pf_t12_t24 + niv_hacor.niv_hacor_rr_t12_t24) AS total_niv_hacor_score_t12_t24,
     niv_hacor.intubated_within_6h_of_niv,
     niv_hacor.intubated_within_12h_of_niv,
-
     sofa.respiration_sofa + sofa.coagulation_sofa + sofa.liver_sofa + sofa.cardiovascular_sofa + sofa.cns_sofa + sofa.renal_sofa AS first_day_sofa_score,
     sofa.respiration_sofa,
     sofa.coagulation_sofa,
