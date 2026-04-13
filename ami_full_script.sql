@@ -1270,14 +1270,11 @@ SELECT
    bc.subject_id, bc.hadm_id, bc.stay_id,
    CASE WHEN cicu.careunit IS NOT NULL THEN 1 ELSE 0 END AS is_cicu_stay,
    cicu.careunit, acs.acs_icd_codes,
-
    preg.pregnancy_icd_codes, con.congenital_anomaly_icd_codes, hem_mal.hematolymphoid_icd_codes, mal.malignancy_icd_codes, aids.aids_icd_codes,
-
    pat.gender, pat.anchor_age, pat.anchor_year, pat.anchor_year_group,
    adm.admittime, adm.dischtime,
    outcomes.death_datetime,
    adm.race,
-
    IFNULL(flags.has_t1d, 0) AS has_t1d, IFNULL(flags.has_t2d, 0) AS has_t2d,
    IFNULL(flags.has_hypertension_outcome, 0) AS has_hypertension_outcome,
    IFNULL(flags.has_dyslipidemia, 0) AS has_dyslipidemia,
