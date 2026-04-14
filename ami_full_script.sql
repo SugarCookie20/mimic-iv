@@ -1069,7 +1069,6 @@ First_Braden_Assessment AS (
          AND c.valuenum IS NOT NULL
    ),
    Grouped_Assessments AS (
-
        SELECT
            hadm_id,
            charttime,
