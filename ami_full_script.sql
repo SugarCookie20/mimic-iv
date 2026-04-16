@@ -1,7 +1,6 @@
 CREATE OR REPLACE TABLE `my-mimic-research.my_results.ami_cohort_with_all_features` AS
 (
 WITH
-
 Base_Cohort AS (
    SELECT
        subject_id,
