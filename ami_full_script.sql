@@ -189,7 +189,6 @@ Procedure_Flags AS (
     WHERE hadm_id IN (SELECT hadm_id FROM Base_Cohort)
     GROUP BY hadm_id
 ),
-
 Medication_Flags AS (
     SELECT
         i.hadm_id,
