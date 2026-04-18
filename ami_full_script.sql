@@ -365,7 +365,6 @@ Baseline_Features AS (
     FROM RankedEvents WHERE rn = 1
     GROUP BY stay_id
 ),
-
 Min_Heart_Rate_First_24h AS (
     SELECT
         i.stay_id,
@@ -377,7 +376,6 @@ Min_Heart_Rate_First_24h AS (
       AND c.charttime BETWEEN i.intime AND DATETIME_ADD(i.intime, INTERVAL 24 HOUR)
     GROUP BY i.stay_id
 ),
-
 Braden_Scores AS (
     SELECT
         i.hadm_id,
@@ -393,7 +391,6 @@ Braden_Scores AS (
       AND c.itemid IN (224059, 224055, 224057, 224056, 224058, 224054)
     GROUP BY i.hadm_id
 ),
-
 Comprehensive_Outcomes AS (
   SELECT
       bc.hadm_id,
@@ -426,7 +423,6 @@ Comprehensive_Outcomes AS (
   JOIN `physionet-data.mimiciv_3_1_hosp.patients` pat ON bc.subject_id = pat.subject_id
   JOIN `physionet-data.mimiciv_3_1_icu.icustays` icu ON bc.stay_id = icu.stay_id
 ),
-
 Readmission_Flag AS (
     SELECT
         b.hadm_id,
@@ -437,7 +433,6 @@ Readmission_Flag AS (
     WHERE b.hadm_id IN (SELECT hadm_id FROM Base_Cohort)
     GROUP BY b.hadm_id
 ),
-
 Outcome_Flags_ICD AS (
    SELECT
        hadm_id,
@@ -453,7 +448,6 @@ Outcome_Flags_ICD AS (
    )
    GROUP BY hadm_id
 ),
-
 First_Scores AS (
     SELECT
         i.hadm_id,
@@ -480,7 +474,6 @@ First_Scores AS (
     WHERE c.rn = 1
     GROUP BY i.hadm_id
 ),
-
 Charlson_Index AS (
     WITH diag AS (
         SELECT
@@ -607,7 +600,6 @@ First_Day_SOFA AS (
        s.respiration_sofa, s.coagulation_sofa, s.liver_sofa, s.cardiovascular_sofa, s.cns_sofa, s.renal_sofa
     FROM scorecalc s
 ),
-
 APSIII_Score AS (
     WITH ventilation_events AS (
        SELECT stay_id, charttime
@@ -842,7 +834,6 @@ LODS_Scores AS (
        s.neurologic, s.cardiovascular, s.renal, s.pulmonary, s.hematologic, s.hepatic
     FROM scorecomp s
 ),
-
 SAPSII_Score AS (
     WITH ventilation_events AS (
        SELECT stay_id, charttime
@@ -968,7 +959,6 @@ SAPSII_Score AS (
        bilirubin_score, gcs_score, comorbidity_score, admissiontype_score
     FROM score s
 ),
-
 OASIS_Score AS (
     WITH ventilation_events AS (
        SELECT stay_id, charttime
@@ -1042,7 +1032,6 @@ OASIS_Score AS (
        urineoutput_score, mechvent_score, electivesurgery_score
     FROM score
 ),
-
 First_Braden_Assessment AS (
    WITH
    All_Braden_Events AS (
