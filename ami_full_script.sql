@@ -1084,7 +1084,6 @@ First_Braden_Assessment AS (
            ROW_NUMBER() OVER(PARTITION BY hadm_id ORDER BY charttime ASC) as rn
        FROM Grouped_Assessments
    )
-
    SELECT
        hadm_id,
        perception AS first_braden_perception,
@@ -1097,8 +1096,6 @@ First_Braden_Assessment AS (
    FROM Ranked_Assessments
    WHERE rn = 1
 ),
-
-
 CHA2DS2_VASc_Components AS (
     SELECT
         hadm_id,
@@ -1111,7 +1108,6 @@ CHA2DS2_VASc_Components AS (
     WHERE hadm_id IN (SELECT hadm_id FROM Base_Cohort)
     GROUP BY hadm_id
 ),
-
 First_Braden_Scores AS (
     WITH RankedBraden AS (
         SELECT
@@ -1135,7 +1131,6 @@ First_Braden_Scores AS (
     WHERE rn = 1
     GROUP BY hadm_id
 ),
-
 ICU_Readmission_Flag AS (
   SELECT
     stay_id,
@@ -1160,7 +1155,6 @@ ICU_Readmission_Flag AS (
   ) AS ranked_stays
   WHERE stay_id IN (SELECT stay_id FROM Base_Cohort)
 ),
-
 Supplemental_Oxygen_Flag AS (
   SELECT
       i.hadm_id,
@@ -1193,7 +1187,6 @@ NIV_Flag AS (
   )
   GROUP BY hadm_id
 ),
-
 IMV_Flag AS (
   SELECT
       hadm_id,
