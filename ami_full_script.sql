@@ -1204,7 +1204,6 @@ IMV_Flag AS (
   )
   GROUP BY hadm_id
 ),
-
 RRT_Flag AS (
   SELECT
       hadm_id,
@@ -1218,7 +1217,6 @@ RRT_Flag AS (
     )
   GROUP BY hadm_id
 ),
-
 MCARS_Score AS (
     SELECT
         bc.stay_id,
