@@ -1232,16 +1232,13 @@ MCARS_Score AS (
         IFNULL(CASE WHEN flags.has_shock = 1 THEN 2 ELSE 0 END, 0) +
         IFNULL(CASE WHEN flags.has_respiratory_failure = 1 THEN 1 ELSE 0 END, 0)
         AS mcars_score
-
     FROM Base_Cohort bc
     LEFT JOIN Baseline_Features bf ON bc.stay_id = bf.stay_id
     LEFT JOIN First_Scores fs ON bc.hadm_id = fs.hadm_id
     LEFT JOIN First_Braden_Assessment fba ON bc.hadm_id = fba.hadm_id
     LEFT JOIN Confounder_Flags flags ON bc.hadm_id = flags.hadm_id
 )
-
 SELECT
-
    bc.subject_id, bc.hadm_id, bc.stay_id,
    CASE WHEN cicu.careunit IS NOT NULL THEN 1 ELSE 0 END AS is_cicu_stay,
    cicu.careunit, acs.acs_icd_codes,
