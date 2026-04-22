@@ -1275,7 +1275,6 @@ SELECT
    IFNULL(niv_flag.had_niv, 0) AS had_niv,
    IFNULL(imv_flag.had_imv, 0) AS had_imv,
    IFNULL(rrt_flag.had_rrt, 0) AS had_rrt,
-
    IFNULL(meds.had_norepinephrine, 0) AS had_norepinephrine,
    IFNULL(meds.had_epinephrine, 0) AS had_epinephrine,
    IFNULL(meds.had_dopamine, 0) AS had_dopamine,
@@ -1283,11 +1282,9 @@ SELECT
    IFNULL(meds.had_dobutamine, 0) AS had_dobutamine,
    IFNULL(meds.had_phenylephrine, 0) AS had_phenylephrine,
    IFNULL(meds.had_milrinone, 0) AS had_milrinone,
-
    bf.* EXCEPT(stay_id),
    mhr.min_heart_rate_first_24h,
    bs.sum_braden_skin_score, bs.sum_braden_moisture, bs.sum_braden_mobility, bs.sum_braden_activity, bs.sum_braden_nutrition, bs.sum_braden_perception,
-
    outcomes.icu_los_days,
    outcomes.icu_los_less_than_1_day_flag,
    outcomes.hospital_los_days,
