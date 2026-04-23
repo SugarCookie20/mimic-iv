@@ -1395,7 +1395,6 @@ SELECT
    IFNULL(cha.has_stroke_tia_thrombo, 0) AS has_stroke_tia_thrombo,
    IFNULL(cha.has_vascular_disease, 0) AS has_vascular_disease,
    mcars.mcars_score
-
 FROM Base_Cohort bc
 INNER JOIN `physionet-data.mimiciv_3_1_hosp.admissions` adm ON bc.hadm_id = adm.hadm_id
 INNER JOIN `physionet-data.mimiciv_3_1_hosp.patients` pat ON bc.subject_id = pat.subject_id
