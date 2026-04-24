@@ -1169,8 +1169,7 @@ Supplemental_Oxygen_Flag AS (
         'High flow neb', 'Nasal cannula'
     )
   GROUP BY i.hadm_id
-)
-,
+),
 NIV_Flag AS (
   SELECT
       hadm_id,
