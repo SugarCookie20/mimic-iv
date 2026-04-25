@@ -1070,7 +1070,6 @@ First_Braden_Assessment AS (
        HAVING COUNT(DISTINCT itemid) = 6
    ),
    Ranked_Assessments AS (
-
        SELECT
            hadm_id,
            perception,
