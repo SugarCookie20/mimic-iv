@@ -213,7 +213,6 @@ Medication_Flags AS (
       )
     GROUP BY i.hadm_id
 ),
-
 Baseline_Features AS (
     WITH
     Time_Window AS (
