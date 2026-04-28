@@ -1931,7 +1931,6 @@ SELECT
     nfc.niv_failure_no_trachmask,
     aps.apsiii,
     1 / (1 + EXP(- (-4.4360 + 0.04726 * (aps.apsiii)))) AS apsiii_prob,
-
     hacor.sbt_starttime,
     hacor.hr_t1, hacor.hacor_score_hr_t1,
     hacor.ph_t1, hacor.hacor_score_ph_t1,
@@ -1945,7 +1944,6 @@ SELECT
     hacor.pf_ratio_calc_t3, hacor.hacor_score_pf_t3,
     hacor.resp_rate_t3, hacor.hacor_score_rr_t3,
     (hacor.hacor_score_hr_t3 + hacor.hacor_score_ph_t3 + hacor.hacor_score_gcs_t3 + hacor.hacor_score_pf_t3 + hacor.hacor_score_rr_t3) AS total_hacor_score_t3,
-
     niv_hacor.niv_starttime,
     niv_hacor.niv_hr_t0_t6,
     niv_hacor.niv_ph_t0_t6,
