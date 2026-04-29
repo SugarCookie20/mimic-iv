@@ -1898,7 +1898,6 @@ SELECT
     IFNULL(rrt_flag.had_rrt, 0) AS had_rrt,
     bf.* EXCEPT (subject_id, hadm_id, stay_id),
     meds.* EXCEPT(hadm_id),
-
     so.icu_los_days,
     so.hospital_los_days,
     so.in_hospital_mortality_flag,
@@ -1913,7 +1912,6 @@ SELECT
     CASE WHEN so.death_datetime IS NOT NULL AND DATETIME_DIFF(so.death_datetime, adm.admittime, DAY) <= 365 THEN 1 ELSE 0 END AS mortality_12_mo,
     IFNULL(hosp_readmit.readmission_30_day, 0) as hospital_readmission_30_day,
     IFNULL(icu_readmit.icu_readmission_30_day, 0) AS icu_readmission_30_day,
-
     peo.duration_mask_ventilation,
     peo.duration_invasive_vent,
     IFNULL(peo.extubation_flag, 0) as extubation_flag,
@@ -1921,12 +1919,10 @@ SELECT
     IFNULL(oflags.weaning_deferred_flag, 0) as weaning_deferred_flag,
     IFNULL(oflags.ecmo_flag, 0) as ecmo_flag,
     IFNULL(oflags.lung_transplant_current, 0) as lung_transplant_current,
-
     IFNULL(w_outcome.weaning_failure, 0) as weaning_failure,
     IFNULL(w_outcome.weaning_success, 0) as weaning_success,
     IFNULL(w_outcome.weaning_indeterminate, 0) as weaning_indeterminate,
     IFNULL(w_outcome.weaning_outcome_status, 0) as weaning_outcome_status,
-
     nfc.niv_failure,
     nfc.niv_failure_no_trachmask,
     aps.apsiii,
