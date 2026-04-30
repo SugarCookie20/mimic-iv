@@ -1806,8 +1806,6 @@ Charlson_Comorbidity_Index AS (
     FROM com
     LEFT JOIN ag ON com.hadm_id = ag.hadm_id
 )
-
-
 SELECT
     cohort.subject_id, cohort.hadm_id, cohort.stay_id,
     pat.gender, pat.anchor_age, pat.anchor_year, pat.anchor_year_group,
