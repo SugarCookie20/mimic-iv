@@ -1584,7 +1584,6 @@ final_rox_scores AS (
     FROM pivoted_values_rox p
     LEFT JOIN NIV_Intubation_Flags flags ON p.stay_id = flags.stay_id
 ),
-
 First_Vent_Type AS (
     WITH all_vents AS (
         SELECT stay_id, event_time, 'NIV' as vent_type FROM All_NIV_Events
@@ -1604,7 +1603,6 @@ First_Vent_Type AS (
     FROM ranked_vents
     WHERE rn = 1
 ),
-
 ICU_Readmission_Flag AS (
   SELECT
     stay_id,
@@ -1629,7 +1627,6 @@ ICU_Readmission_Flag AS (
   ) AS ranked_stays
   WHERE stay_id IN (SELECT stay_id FROM Core_Cohort)
 ),
-
 Supplemental_Oxygen_Flag AS (
   SELECT
       i.hadm_id,
@@ -1645,7 +1642,6 @@ Supplemental_Oxygen_Flag AS (
     )
   GROUP BY i.hadm_id
 ),
-
 NIV_Flag AS (
   SELECT
       hadm_id,
@@ -1662,7 +1658,6 @@ NIV_Flag AS (
   )
   GROUP BY hadm_id
 ),
-
 IMV_Flag AS (
   SELECT
       hadm_id,
@@ -1680,7 +1675,6 @@ IMV_Flag AS (
   )
   GROUP BY hadm_id
 ),
-
 RRT_Flag AS (
   SELECT
       hadm_id,
@@ -1694,7 +1688,6 @@ RRT_Flag AS (
     )
   GROUP BY hadm_id
 ),
-
 First_Invasive_Vent_Time AS (
     SELECT
         stay_id,
@@ -1703,7 +1696,6 @@ First_Invasive_Vent_Time AS (
     WHERE vent_type = 'Invasive'
     GROUP BY stay_id
 ),
-
 NIV_Procedure_Durations AS (
     SELECT
         stay_id,
@@ -1713,7 +1705,6 @@ NIV_Procedure_Durations AS (
     WHERE itemid = 225794
       AND stay_id IN (SELECT stay_id FROM Core_Cohort)
 ),
-
 NIVF_Durations AS (
     SELECT
         niv.stay_id,
@@ -1726,7 +1717,6 @@ NIVF_Durations AS (
     LEFT JOIN First_Invasive_Vent_Time AS fiv ON niv.stay_id = fiv.stay_id
     WHERE niv.starttime < IFNULL(fiv.first_invasive_time, DATETIME '9999-12-31 23:59:59')
 ),
-
 NIVF_Total_Duration AS (
     SELECT
         stay_id,
@@ -1734,7 +1724,6 @@ NIVF_Total_Duration AS (
     FROM NIVF_Durations
     GROUP BY stay_id
 ),
-
 Charlson_Comorbidity_Index AS (
     WITH
     diag AS (
